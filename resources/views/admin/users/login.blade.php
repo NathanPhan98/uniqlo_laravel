@@ -44,7 +44,7 @@
                                         <div>
                                             <label class="form-check">
                                                 <input class="form-check-input" type="checkbox" value="remember-me"
-                                                    name="remember-me" checked="">
+                                                    name="remember" checked="">
                                                 <span class="form-check-label">
                                                     Remember me next time
                                                 </span>

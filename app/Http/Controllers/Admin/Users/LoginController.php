@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Users;
+namespace App\Http\Controllers\admin\users;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
@@ -15,16 +16,18 @@ class LoginController extends Controller
     }
 
     public function store(Request $request){
-        $validated = $request->validate([
+        $this->validate($request,[
             'email' => 'required|email:filter',
             'password' => 'required',
         ]);
 
-        if( Auth::attempt([
+        if(Auth::attempt([
             'email' => $request->input('email'),
             'password' => $request->input('password')
         ])){
-           echo 'true'; 
+            return redirect()->route('dashboard');
         }
+
+        return Redirect()->back();
     }
 }
